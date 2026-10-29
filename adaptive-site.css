@@ -1,13 +1,13 @@
 @font-face {
     font-family: "TTLakes";
-    src: url("fonts/TTLakes-Regular.woff") format("woff2");
+    src: url("fonts/TTLakes-Regular.woff") format("woff");
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: "TTLakes";
-    src: url("fonts/TTLakes-Bold.woff") format("woff2");
+    src: url("fonts/TTLakes-Bold.woff") format("woff");
     font-weight: 700;
     font-style: normal;
 }
@@ -117,8 +117,8 @@ body {
     display: flex;
     flex-wrap: nowrap;
     margin-top: 24px;
-    margin-left: 16px;
-    width: calc(100% - 16px);
+    padding-left: 16px;
+    
     gap: 19.56px;
 
     overflow-x: auto;
@@ -126,8 +126,32 @@ body {
     scrollbar-width: none;
 }
 
-.categories__repairable-devices,
+.categories-wrapper {
+    position: relative
+}
 
+.categories-wrapper::before,
+.categories-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 24px;
+    height: 40px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.categories-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, #F8F8F8, transparent);
+}
+
+.categories-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, #F8F8F8, transparent);
+}
+
+.categories__repairable-devices,
 .categories__additional,
 .categories__prices,
 .categories__service-prices,
@@ -143,6 +167,9 @@ body {
     border: 2px solid transparent;
     border-radius: 8px;
     color: #7E7E82;
+
+    height: 40px;
+    width: 246px;
 }
 
 .categories__repairable-devices {
@@ -156,8 +183,9 @@ body {
 }
 
 .description__text {
-    margin-left: 16px;
-    margin-top: 24px;
+    margin: 24px 16px 0;
+    font-weight: 400;
+    size: 14px;
 
     letter-spacing: 0.2px;
     line-height: 18px;
@@ -174,6 +202,7 @@ body {
     align-items: center;
     gap: 16.21px;
 
+    margin-top: 16px;
     margin-left: 24.29px;
 }
 
@@ -184,7 +213,7 @@ body {
 }
 
 .description__read-more {
-    font-weight: 500px;
+    font-weight: 500;
     font-size: 16px;
     line-height: 24px;
     letter-spacing: -0.2px;
